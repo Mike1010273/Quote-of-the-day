@@ -37,6 +37,62 @@
    console.log(data);
 
 }
+    async function getQuote() {
+
+   const apiKey = "JNqfLR7fCQZQuNHacImgdACIrGDJLD48zkhkufA1";
+
+   const response = await fetch(
+       "https://api.api-ninjas.com/v1/quotes",
+       {
+           headers:{
+               "X-Api-Key": apiKey
+           }
+       }
+   );
+
+   const data = await response.json();
+
+   document.getElementById("quote").innerText =
+       `"${data[0].quote}"`;
+
+   document.getElementById("author").innerText =
+       `- ${data[0].author}`;
+}
+    async function getQuote() {
+
+   try {
+
+       const apiKey = "JNqfLR7fCQZQuNHacImgdACIrGDJLD48zkhkufA1";
+
+       const response = await fetch(
+           "https://api.api-ninjas.com/v1/quotes",
+           {
+               headers:{
+                   "X-Api-Key": apiKey
+               }
+           }
+       );
+
+       const data = await response.json();
+
+       document.getElementById("quote").innerText =
+           `"${data[0].quote}"`;
+
+       document.getElementById("author").innerText =
+           `- ${data[0].author}`;
+
+   }
+   catch(error){
+
+       document.getElementById("quote").innerText =
+           "Unable to load quote.";
+
+       console.log(error);
+   }
+}
+
+
+
 
 
   </body>
